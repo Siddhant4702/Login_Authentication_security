@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Forget Password</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+</head>
+<style>
+    #middle_div{
+        margin-top: 100px;
+        border: 1px solid #333; /* Light black border */
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); /* Light black shadow */
+        padding: 20px; /* Padding for inner content */
+        background-color: #fff; /* White background */
+    }
+    .opt{
+        margin-left: 20rem;
+    }
+</style>
+<body>
+
+<!-- create navigation bar ( header) -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" th:href="@{/}">Registration and
+                Login Module</a>
+        </div>
+    </div>
+</nav>
+
+<br>
+<br>
+<br>
+<div class = "container">
+    <div class = "row">
+        <div id="middle_div" class = "col-md-6 col-md-offset-3 rounded border border-light shadow p-3 mb-5 bg-white">
+
+            <div th:if="${session.message}" >
+                <div  class="alert alert-danger my-2 text-center" role="alert" >
+                    <span th:text="${session.message}"></span>
+                </div>
+                <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+            </div>
+
+
+            <h1 class="text-center m-3"> <b>Your Registrated Email</b> </h1>
+            <form action="" th:action="@{/send-otp}" method="post">
+            <div class="form-group">
+                <input name="email" type="email" placeholder="Enter Your email here" class="form-control" required="required">
+            </div>
+                <div class="container opt">
+                    <button class="btn btn-warning text-center">Send OTP</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
